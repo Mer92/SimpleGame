@@ -1,15 +1,51 @@
+//Set variables to allow computer to select and output
+let choice1 = "Rock";
+let choice2 = "Paper";
+let choice3 = "Scissors";
+
+// The playerSelection parameter is case insensitive
+let patternChoice1 = /Rock/i;
+let input1 = choice1.match(patternChoice1);
+let patternChoice2 = /Paper/i;
+let input2 = choice2.match(patternChoice2);
+let patternChoice3 = /Scissors/i;
+let input3 = choice3.match(patternChoice3);
+
+// The user uses a prompt method to input selection, either rock, paper or scissors 
+let playerSelection = prompt("Please input your choice", "Rock | Paper | Scissors");
+
 // A computerPlay function is created
+// The computer randomly outputs either rock, paper or scissors
 function computerPlay(){
 
-}
-// The computer randomly outputs either rock, paper or scissors
-// A single round function is created
-function round(playerSelection, computerSelection){
 
 }
-// The function takes the parameters of playerSelection and computerSelection
+
+// A single round function is created
+// The function takes the parameters  of playerSelection and computerSelection
 // When the round is over a message is displayed stating a winner or loser of the round
-// The playerSelection parameter is case insensitive
+
+function round(playerSelection, computerSelection){
+if (playerSelection == input1 && computerSelection == choice3){
+    console.log ("You Win! Rock beats Scissors");
+    }
+else if (playerSelection == input3 && computerSelection == choice2){
+    console.log ("You Win! Scissors beats Paper");
+    }
+else if (playerSelection == input2 && computerSelection == choice1){
+        console.log ("You Win! Paper beats Rock");
+    }
+else if (playerSelection == input2 && computerSelection == choice3){
+        console.log ("You Lose! Scissors beats Paper");
+    }
+else if (playerSelection == input3 && computerSelection == choice1){
+        console.log ("You Lose! Rock beats Scissors");
+    }
+else if (playerSelection == input1 && computerSelection == choice2){
+        console.log ("You Win! Paper beats Rock");
+    }
+}
+
 // A playRound function is declared
 function playRound(playerSelection, computerSelection) { 
     
@@ -34,4 +70,3 @@ for (let i = 0; i < 5; i++) {
  }
 
 // The results and winner of each round at the end  are seen in the console 
-// The user uses a prompt method to input selection, either rock, paper or scissors 
