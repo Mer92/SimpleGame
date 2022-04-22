@@ -15,10 +15,14 @@ let input3 = choice3.match(patternChoice3);
 const playerSelection = prompt("Please input your choice", "Rock | Paper | Scissors");
 
 // A computerPlay function is created
-// The computer randomly outputs either rock, paper or scissors
 function computerPlay(){
+    let computerChoice = ["Rock", "Paper", "Scissors"];
+// The computer randomly outputs either rock, paper or scissors
+   let randomNumber = computerChoice[Math.floor(Math.random()* 3)];
+   
+   //log computers output
 
-
+   console.log("The computer has chosen: " + randomNumber);
 }
 
 // A single round function is created
@@ -31,6 +35,7 @@ if (playerSelection == input1 && computerSelection == choice3){
     console.log ("You Win! Rock beats Scissors");
     }
     else if (playerSelection == input3 && computerSelection == choice2){
+        //print players choice?
         console.log ("You Win! Scissors beats Paper");
     }
     else if (playerSelection == input2 && computerSelection == choice1){
@@ -61,7 +66,9 @@ function game(){
 }
 
 
-// A 5 round game keeps score, reports the winner or loser at the end of each round game
+// A 5 round game 
+//keeps score
+//reports the winner or loser at the end of each  game
 
 
 
