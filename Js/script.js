@@ -1,6 +1,6 @@
-let rockPattern;
-let  paperPattern;
-let scissorsPattern;
+let rockPattern = "";
+let  paperPattern="";
+let scissorsPattern="";
 
 
 function choice() {
@@ -13,7 +13,7 @@ function choice() {
   return playerChoice;
 }
 
-let playerSelection;
+let playerSelection = "";
 // The user uses a promptmethod to input selection, either rock, paper or scissors
 //let playerSelection = prompt("Please input your choice", "Rock | Paper | Scissors");
 //console.log("You chose: " + playerSelection);
@@ -35,7 +35,7 @@ let playerPoints = 0;
 let computerPoints = 0;
 // A single round function is created
 // The function takes the parameters  of playerSelection and computerSelection
-let computerSelection;
+let computerSelection = "";
 
 function playRound(playerSelection, computerSelection) {
   playerSelection = choice();
