@@ -1,3 +1,8 @@
+let rockPattern;
+let  paperPattern;
+let scissorsPattern;
+
+
 function choice() {
   let playerChoice = prompt(
     "Please input your choice",
@@ -8,7 +13,7 @@ function choice() {
   return playerChoice;
 }
 
-
+let playerSelection;
 // The user uses a promptmethod to input selection, either rock, paper or scissors
 //let playerSelection = prompt("Please input your choice", "Rock | Paper | Scissors");
 //console.log("You chose: " + playerSelection);
@@ -30,45 +35,50 @@ let playerPoints = 0;
 let computerPoints = 0;
 // A single round function is created
 // The function takes the parameters  of playerSelection and computerSelection
-
+let computerSelection;
 
 function playRound(playerSelection, computerSelection) {
-  let playerSelection = choice();
-  let computerSelection = computerPlay();
+  playerSelection = choice();
+  computerSelection = computerPlay();
+  rockPattern = /rock/i;
+  paperPattern = /paper/i;
+  scissorsPattern = /scissors/i;
 
-  if (playerSelection == "Rock" && computerSelection == "Scissors") {
+
+  if (playerSelection.match(rockPattern)  && computerSelection == "Scissors") {
     // When the round is over a message is displayed stating a winner or loser of the round
     console.log(
       "You Win! Rock beats Scissors. Your point(s) are: " + ++playerPoints
     );
     console.log("The computers point(s) are: " + computerPoints);
-  } else if (playerSelection == "Scissors" && computerSelection == "Paper") {
+  } else if (playerSelection.match(scissorsPattern)  && computerSelection == "Paper") {
     //print players choice?
     console.log(
       "You Win! Scissors beats Paper. Your point(s) are: " + ++playerPoints
     );
     console.log("The computers point(s) are: " + computerPoints);
-  } else if (playerSelection == "Paper" && computerSelection == "Rock") {
+  } else if (playerSelection.match(paperPattern)  && computerSelection == "Rock") {
     console.log(
       "You Win! Paper beats Rock. Your point(s) are: " + ++playerPoints
     );
     console.log("The computers point(s) are: " + computerPoints);
-  } else if (playerSelection == "Paper" && computerSelection == "Scissors") {
+  } else if (playerSelection.match(paperPattern)  && computerSelection == "Scissors") {
     console.log(
       "You Lose! Scissors beats Paper. Your point(s) are: " + playerPoints
     );
     console.log("The computers point(s) are: " + ++computerPoints);
-  } else if (playerSelection == "Scissors" && computerSelection == "Rock") {
+  } else if (playerSelection.match(scissorsPattern)  && computerSelection == "Rock") {
     console.log(
       "You Lose! Rock beats Scissors. Your point(s) are: " + playerPoints
     );
     console.log("The computers point(s) are: " + ++computerPoints);
-  } else if (playerSelection == "Rock" && computerSelection == "Paper") {
+  } else if (playerSelection.match(rockPattern)  && computerSelection == "Paper") {
     console.log(
       "You Lose! Paper beats Rock. Your point(s) are: " + playerPoints
     );
     console.log("The computers point(s) are: " + ++computerPoints);
-  } else if (playerSelection == computerSelection) {
+  } else if (playerSelection.match(rockPattern) || playerSelection.match(paperPattern)
+  ||playerSelection.match(scissorsPattern) == computerSelection) {
     console.log("ITS A DRAW!!. Your point(s) are: " + playerPoints);
     console.log("The computers point(s) are: " + computerPoints);
   }
@@ -76,11 +86,9 @@ function playRound(playerSelection, computerSelection) {
   return { playerSelection, computerSelection };
 }
 
-playRound(playerSelection, computerSelection);
-playRound(playerSelection, computerSelection);
-playRound(playerSelection, computerSelection);
-playRound(playerSelection, computerSelection);
-playRound(playerSelection, computerSelection);
+playRound();
+
+
 
 // The results of the playRound function are returned
 //console.log(playRound(playerSelection, computerSelection));
