@@ -77,8 +77,9 @@ function playRound(playerSelection, computerSelection) {
       "You Lose! Paper beats Rock. Your point(s) are: " + playerPoints
     );
     console.log("The computers point(s) are: " + ++computerPoints);
-  } else if (playerSelection.match(rockPattern) || playerSelection.match(paperPattern)
-  ||playerSelection.match(scissorsPattern) == computerSelection) {
+  } else if (playerSelection.match(rockPattern) && computerSelection == "Rock"
+   || playerSelection.match(paperPattern) && computerSelection == "Paper"
+  ||playerSelection.match(scissorsPattern) && computerSelection == "Scissors") {
     console.log("ITS A DRAW!!. Your point(s) are: " + playerPoints);
     console.log("The computers point(s) are: " + computerPoints);
   }
