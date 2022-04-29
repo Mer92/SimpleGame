@@ -1,70 +1,111 @@
-//Set variables to allow computer to select and output
-let choice1 = "Rock";
-let choice2 = "Paper";
-let choice3 = "Scissors";
+function choice() {
+  let playerChoice = prompt(
+    "Please input your choice",
+    "Rock | Paper | Scissors"
+  );
+  console.log("You chose: " + playerChoice);
 
-// The playerSelection parameter is case insensitive
-let patternChoice1 = /rock/i;
-let input1 = choice1.match(patternChoice1);
-let patternChoice2 = /paper/i;
-let input2 = choice2.match(patternChoice2);
-let patternChoice3 = /scissors/i;
-let input3 = choice3.match(patternChoice3);
+  return playerChoice;
+}
 
-// The user uses a prompt method to input selection, either rock, paper or scissors 
-const playerSelection = prompt("Please input your choice", "Rock | Paper | Scissors");
+
+// The user uses a promptmethod to input selection, either rock, paper or scissors
+//let playerSelection = prompt("Please input your choice", "Rock | Paper | Scissors");
+//console.log("You chose: " + playerSelection);
 
 // A computerPlay function is created
-function computerPlay(){
-    let computerChoice = ["Rock", "Paper", "Scissors"];
-// The computer randomly outputs either rock, paper or scissors
-   let randomNumber = computerChoice[Math.floor(Math.random()* 3)];
-   
-   //log computers output
+function computerPlay() {
+  let computerChoice = ["Rock", "Paper", "Scissors"];
+  // The computer randomly outputs either rock, paper or scissors
+  let randomNumber = computerChoice[Math.floor(Math.random() * 3)];
 
-   console.log("The computer has chosen: " + randomNumber);
+  //log computers output
+
+  console.log("The computer has chosen: " + randomNumber);
+
+  return randomNumber;
 }
 
+let playerPoints = 0;
+let computerPoints = 0;
 // A single round function is created
 // The function takes the parameters  of playerSelection and computerSelection
-const computerSelection = computerPlay(); 
 
-function playRound(playerSelection, computerSelection){
-if (playerSelection == input1 && computerSelection == choice3){
+
+function playRound(playerSelection, computerSelection) {
+  let playerSelection = choice();
+  let computerSelection = computerPlay();
+
+  if (playerSelection == "Rock" && computerSelection == "Scissors") {
     // When the round is over a message is displayed stating a winner or loser of the round
-    console.log ("You Win! Rock beats Scissors");
-    }
-    else if (playerSelection == input3 && computerSelection == choice2){
-        //print players choice?
-        console.log ("You Win! Scissors beats Paper");
-    }
-    else if (playerSelection == input2 && computerSelection == choice1){
-            console.log ("You Win! Paper beats Rock");
-    }
-    else if (playerSelection == input2 && computerSelection == choice3){
-            console.log ("You Lose! Scissors beats Paper");
-    }
-    else if (playerSelection == input3 && computerSelection == choice1){
-            console.log ("You Lose! Rock beats Scissors");
-    }
-    else if (playerSelection == input1 && computerSelection == choice2){
-            console.log ("You Win! Paper beats Rock");
-    }
+    console.log(
+      "You Win! Rock beats Scissors. Your point(s) are: " + ++playerPoints
+    );
+    console.log("The computers point(s) are: " + computerPoints);
+  } else if (playerSelection == "Scissors" && computerSelection == "Paper") {
+    //print players choice?
+    console.log(
+      "You Win! Scissors beats Paper. Your point(s) are: " + ++playerPoints
+    );
+    console.log("The computers point(s) are: " + computerPoints);
+  } else if (playerSelection == "Paper" && computerSelection == "Rock") {
+    console.log(
+      "You Win! Paper beats Rock. Your point(s) are: " + ++playerPoints
+    );
+    console.log("The computers point(s) are: " + computerPoints);
+  } else if (playerSelection == "Paper" && computerSelection == "Scissors") {
+    console.log(
+      "You Lose! Scissors beats Paper. Your point(s) are: " + playerPoints
+    );
+    console.log("The computers point(s) are: " + ++computerPoints);
+  } else if (playerSelection == "Scissors" && computerSelection == "Rock") {
+    console.log(
+      "You Lose! Rock beats Scissors. Your point(s) are: " + playerPoints
+    );
+    console.log("The computers point(s) are: " + ++computerPoints);
+  } else if (playerSelection == "Rock" && computerSelection == "Paper") {
+    console.log(
+      "You Lose! Paper beats Rock. Your point(s) are: " + playerPoints
+    );
+    console.log("The computers point(s) are: " + ++computerPoints);
+  } else if (playerSelection == computerSelection) {
+    console.log("ITS A DRAW!!. Your point(s) are: " + playerPoints);
+    console.log("The computers point(s) are: " + computerPoints);
+  }
+
+  return { playerSelection, computerSelection };
 }
 
-// The results of the playRound function are returned 
-console.log(playRound(playerSelection, computerSelection));
+playRound(playerSelection, computerSelection);
+playRound(playerSelection, computerSelection);
+playRound(playerSelection, computerSelection);
+playRound(playerSelection, computerSelection);
+playRound(playerSelection, computerSelection);
 
-// A game function is created 
-function game(){
+// The results of the playRound function are returned
+//console.log(playRound(playerSelection, computerSelection));
+/*
+// A game function is created
+function game() {
     // The playRound function is called inside the game function
     playRound();
-    // Loop from 0 to 5 
+    // Loop from 0 to 5
     for (let i = 0; i < 5; i++) {
-        // your code here!
-     }
-}
-
+      // your code here!
+      // if player has more points at the end of game they win game
+      if (playerPoints > computerPoints && i == 5) {
+        console.log("You Won the game you have " + playerPoints + "Points");
+        console.log("The computer has " + computerPoints + "Points");
+      }
+  
+      // if computer has more points at the end of game they win
+      else if (computerPoints > playerPoints && i == 5) {
+        console.log("You Lost the game you have " + playerPoints + "Points");
+        console.log("The computer has " + computerPoints + "Points");
+      }
+    }
+  }
+  game();
 
 // A 5 round game 
 //keeps score
@@ -73,5 +114,25 @@ function game(){
 
 
 // The results and winner of each round at the end  are seen in the console 
-console.log("You Lose the game!! the computer won");
-console.log("You Won the game!! the computer lose");
+/* console.log("You Lose the game!! the computer won");
+console.log("You Won the game!! the computer lost"); */
+
+/*
+//Set variables to allow computer to select and output
+let choice1 = "Rock";
+let choice2 = "Paper";
+let choice3 = "Scissors";
+
+// The user uses a prompt method to input selection, either rock, paper or scissors 
+let playerSelection = prompt("Please input your choice", "Rock | Paper | Scissors");
+console.log("You chose: " + playerSelection);
+
+// The playerSelection parameter is case insensitive
+let patternChoice1 = /rock/i;
+let input1 = patternChoice1.exec(playerSelection);
+let patternChoice2 = /paper/i;
+let input2 = patternChoice2.exec(playerSelection);
+let patternChoice3 = /scissors/i;
+let input3 = patternChoice3.exec(playerSelection);
+
+*/
