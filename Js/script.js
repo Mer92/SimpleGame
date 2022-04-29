@@ -82,14 +82,42 @@ function playRound(playerSelection, computerSelection) {
     console.log("ITS A DRAW!!. Your point(s) are: " + playerPoints);
     console.log("The computers point(s) are: " + computerPoints);
   }
+  else if (!playerSelection.match(rockPattern) || !playerSelection.match(paperPattern)
+   || !playerSelection.match(scissorsPattern)) {
+     alert("You have entered an incorrect value please try again");
+
+  }
 
   return { playerSelection, computerSelection };
 }
 
-playRound();
 
 
 
+function game(){
+   
+    for (let i = 0; i < 6; i++){
+    if (i < 5){
+      playRound();
+    }
+    else if (i == 5 && computerPoints < playerPoints){
+      console.log("You Won the game you have " + playerPoints + " Points");
+      console.log("The computer has " + computerPoints + " Points");
+    }
+    else if (i == 5 && computerPoints > playerPoints){
+      console.log("You Lost the game you have " + playerPoints + " Points");
+      console.log("The computer has " + computerPoints + " Points");
+    }
+
+    else if (i ==5 && computerPoints == playerPoints){
+      console.log("The game is a DRAW! you have " + playerPoints + " Points");
+      console.log("The computer has " + computerPoints + " Points");
+    }
+  }
+  
+}
+
+game();
 // The results of the playRound function are returned
 //console.log(playRound(playerSelection, computerSelection));
 /*
