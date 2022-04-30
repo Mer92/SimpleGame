@@ -1,6 +1,3 @@
-let rockPattern = "";
-let  paperPattern="";
-let scissorsPattern="";
 
 
 function choice() {
@@ -13,7 +10,7 @@ function choice() {
   return playerChoice;
 }
 
-let playerSelection = "";
+
 // The user uses a promptmethod to input selection, either rock, paper or scissors
 //let playerSelection = prompt("Please input your choice", "Rock | Paper | Scissors");
 //console.log("You chose: " + playerSelection);
@@ -35,15 +32,15 @@ let playerPoints = 0;
 let computerPoints = 0;
 // A single round function is created
 // The function takes the parameters  of playerSelection and computerSelection
-let computerSelection = "";
+
 
 function playRound(playerSelection, computerSelection) {
+ 
+ let rockPattern = /rock/i;
+  let paperPattern = /paper/i;
+  let scissorsPattern = /scissors/i;
   playerSelection = choice();
   computerSelection = computerPlay();
-  rockPattern = /rock/i;
-  paperPattern = /paper/i;
-  scissorsPattern = /scissors/i;
-
 
   if (playerSelection.match(rockPattern)  && computerSelection == "Scissors") {
     // When the round is over a message is displayed stating a winner or loser of the round
@@ -88,8 +85,8 @@ function playRound(playerSelection, computerSelection) {
      alert("You have entered an incorrect value please try again");
 
   }
-
-  return { playerSelection, computerSelection };
+  
+ 
 }
 
 
