@@ -39,10 +39,11 @@ function playRound(playerSelection, computerSelection) {
  let rockPattern = /rock/i;
   let paperPattern = /paper/i;
   let scissorsPattern = /scissors/i;
-  playerSelection = choice();
-  computerSelection = computerPlay();
-
-  if (playerSelection.match(rockPattern)  && computerSelection == "Scissors") {
+  
+    if (!playerSelection) {
+      alert("You have entered an incorrect value please try again");
+    }
+  else if (playerSelection.match(rockPattern)  && computerSelection == "Scissors") {
     // When the round is over a message is displayed stating a winner or loser of the round
     console.log(
       "You Win! Rock beats Scissors. Your point(s) are: " + ++playerPoints
@@ -96,7 +97,7 @@ function game(){
    
     for (let i = 0; i < 6; i++){
     if (i < 5){
-      playRound();
+      playRound(choice(), computerPlay());
     }
     else if (i == 5 && computerPoints < playerPoints){
       console.log("You Won the game you have " + playerPoints + " Points");
